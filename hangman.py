@@ -5,6 +5,7 @@ import random
 word = ""
 let = ""
 a = []
+go_back = 0
 
 
 def difficulty():
@@ -61,22 +62,25 @@ print """   		HANGMAN
           |      / |
           |
          _|___"""
-word = random_word()
-a = get_slots(word)
-life = difficulty()
-print life
+
 while True:
-	let = guess()
-	if let in word:
-		replace(word, let, a)
-		print ''.join(a)
-		if word == ''.join(a):
-			print "Congratulations, you win!"
-			exit()
-	else:
-		if life > 0:
-			life -= 1
-			print "You have %d lives left" % life
+	go_back = 0
+	word = random_word()
+	a = get_slots(word)
+	life = difficulty()
+	print life
+	while go_back != 1:
+		let = guess()
+		if let in word:
+			replace(word, let, a)
+			print ''.join(a)
+			if word == ''.join(a):
+				print "Congratulations, you win!"
+				go_back = 1
 		else:
-			print "You lose! :C"
-			break
+			if life > 0:
+				life -= 1
+				print "You have %d lives left" % life
+			else:
+				print "You lose! :C"
+				go_back = 1
