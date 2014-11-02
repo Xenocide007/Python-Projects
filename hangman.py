@@ -53,7 +53,7 @@ def get_slots(word):
 	return a
 
 
-
+#does this work?
 
 
 print "HANGMAN"
