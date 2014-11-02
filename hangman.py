@@ -70,6 +70,9 @@ while True:
 	if let in word:
 		replace(word, let, a)
 		print ''.join(a)
+		if word == ''.join(a):
+			print "Congratulations, you win!"
+			exit()
 	else:
 		if life > 0:
 			life -= 1
