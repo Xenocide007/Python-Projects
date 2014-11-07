@@ -77,7 +77,7 @@ def get_slots(word):
 	print ''.join(a)
 	return a
 
-
+#This is a dead man
 
 #main function
 print """   		HANGMAN
