@@ -1,6 +1,7 @@
 #3 in a row
 import random
 names = []
+gameBoard = []
 def inputNames():
 	name1 = raw_input("Enter first player's name here: \t")
 	name2 = raw_input("Enter second player's name here: \t")
@@ -18,6 +19,14 @@ def first(name1, name2):
 	else:
 		print "%s goes first" % name1
 
-names = inputNames()
-first(names[0], names[1])
+def getBoard(board):
+	for i in range(0, 9):
+		board.append(i)
+	print "\n\t%d  |  %d  |  %d" % board[0], board[1], board[2]
+
+
+
+
+getBoard(gameBoard)
+print gameBoard
 	
