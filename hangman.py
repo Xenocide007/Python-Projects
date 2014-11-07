@@ -1,9 +1,9 @@
-#import crap
+#important crap
 #Rawwwwwwwwr
 import random
 
 #hi guys im writing a comment and ya its fun so this is great grammar and ya
-
+#Death to the rebles
 #conflict is good for the soul
 #variables
 word = ""
@@ -73,7 +73,7 @@ def get_slots(word):
 	print ''.join(a)
 	return a
 
-
+#This is a dead man
 
 #main function
 print """   		HANGMAN
