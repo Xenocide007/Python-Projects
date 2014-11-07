@@ -1,13 +1,32 @@
+#import crap
 import random
 
 
-
+#variables
 word = ""
 let = ""
 a = []
 go_back = 0
+#1 or 2 players?
+def selection():
+	text = raw_input("1 or 2 Players?\t").lower()
+	if text == "1":
+		return "one_player"
+	elif text == "2":
+		return "two_player"
+	else:
+		print "incorrect"
+#if 1 player
+def	one_player():
+	words = ["wind", "victory", "journalism", "movie", "comma", "defenestration"]
+	word = random.choice(words)
+	return word
+#if 2 player
+def	two_player():
+	text = raw_input("Pick a Word...").lower()
+	return text
 
-
+#select difficulty/lives
 def difficulty():
 	dif = raw_input("Select Difficulty: 1    2    3\n")
 	if dif == "1":
@@ -26,23 +45,24 @@ def difficulty():
 		print "Please type only 1 number between 1 and 3\n"
 		exit()
 
-
+#get a random word
 def random_word():
-	words = ["wind", "victory", "journalism", "movie", "comma", "defenestrate"]
-	ranword = words[random.randint(0, 5)]
+	words = open("dictionary.txt", "r")
+	content = [x.strip('\n') for x in words.readlines()]
+	ranword = content[random.randint(0, len(content))]
 	word = ranword
 	return word
-
+#guess a letter
 def guess():
-	letter = raw_input("Guess a letter\n")
+	letter = raw_input("Guess a letter\n").lower()
 	return letter
-
+#this replaces the _ with the correctly guessed letter
 def replace(word, letter, answer):
 	for l in range(len(word)):
 		if letter.lower() == word[l].lower():
 			answer[l] = letter
 	return word
-
+#turns word from string into list then back into a string. Why? BECAUSE I SAID SO!
 def get_slots(word):
 	a = list(word)
 	for l in range(len(a)):
@@ -52,7 +72,7 @@ def get_slots(word):
 
 
 
-
+#main function
 print """   		HANGMAN
            _______
           |/      |
@@ -65,22 +85,44 @@ print """   		HANGMAN
 
 while True:
 	go_back = 0
-	word = random_word()
-	a = get_slots(word)
-	life = difficulty()
-	print life
-	while go_back != 1:
-		let = guess()
-		if let in word:
-			replace(word, let, a)
-			print ''.join(a)
-			if word == ''.join(a):
-				print "Congratulations, you win!"
-				go_back = 1
-		else:
-			if life > 0:
-				life -= 1
-				print "You have %d lives left" % life
+	sel = selection()
+	if sel == "one_player":
+		word = random_word()
+		life = difficulty()
+		a = get_slots(word)
+		print life
+		while go_back != 1:
+			let = guess()
+			if let in word:
+				replace(word, let, a)
+				print ''.join(a)
+				if word == ''.join(a):
+					print "Congratulations, you win!"
+					go_back = 1
 			else:
-				print "You lose! :C"
-				go_back = 1
+				if life > 0:
+					life -= 1
+					print "You have %d lives left" % life
+				else:
+					print "You lose! :C, the word was %s" % word
+					go_back = 1
+	elif sel == "two_player":
+		word = two_player()
+		life = difficulty()
+		a = get_slots(word)
+		print life
+		while go_back != 1:
+			let = guess()
+			if let in word:
+				replace(word, let, a)
+				print ''.join(a)
+				if word == ''.join(a):
+					print "Congratulations, you win!"
+					go_back = 1
+			else:
+				if life > 0:
+					life -= 1
+					print "You have %d lives left" % life
+				else:
+					print "You lose! :C"
+					go_back = 1
