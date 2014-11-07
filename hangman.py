@@ -2,6 +2,7 @@
 import random
 
 #hi guys im writing a comment and ya its fun so this is great grammar and ya
+#Death to the rebles
 #variables
 word = ""
 let = ""
