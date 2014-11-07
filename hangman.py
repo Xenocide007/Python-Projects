@@ -129,3 +129,4 @@ while True:
 				else:
 					print "You lose! :C"
 					go_back = 1
+#dead men have no tails, 
