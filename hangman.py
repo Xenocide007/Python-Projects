@@ -84,7 +84,7 @@ print """   		HANGMAN
           |       |
           |      / |
           |
-         _|___"""
+         _|___"""#this is a dead man
 
 while True:
 	go_back = 0
