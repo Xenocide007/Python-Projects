@@ -20,13 +20,14 @@ def first(name1, name2):
 		print "%s goes first" % name1
 
 def getBoard(board):
-	for i in range(0, 9):
-		board.append(i)
-	print "\n\t%d  |  %d  |  %d" % board[0], board[1], board[2]
+	board = [[1, 2, 3], [4, 5 , 6], [7, 8, 9]
+	print board[1]
 
 
 
 
+#names = inputNames()
+#first(names[0], names[1])
 getBoard(gameBoard)
-print gameBoard
+
 	
