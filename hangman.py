@@ -1,10 +1,6 @@
 #important crap
-#Rawwwwwwwwr
 import random
 
-#hi guys im writing a comment and ya its fun so this is great grammar and ya
-#Death to the rebles
-#conflict is good for the soul
 #variables
 word = ""
 let = ""
@@ -84,7 +80,7 @@ print """   		HANGMAN
           |       |
           |      / |
           |
-         _|___"""#this is a dead man
+         _|___"""
 
 while True:
 	go_back = 0
@@ -129,4 +125,4 @@ while True:
 				else:
 					print "You lose! :C"
 					go_back = 1
-#dead men have no tails, 
+ 
