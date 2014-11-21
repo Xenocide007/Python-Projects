@@ -21,7 +21,7 @@ def first(name1, name2):
 
 def getBoard(board):
 	board = [[1, 2, 3], [4, 5 , 6], [7, 8, 9]
-	print board[1]
+	print board
 
 
 
