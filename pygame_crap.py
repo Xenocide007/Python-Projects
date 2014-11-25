@@ -20,14 +20,14 @@ while True:
 			pygame.quit()
 			sys.exit()
 		if event.type == KEYDOWN:
-			if event.key == K_LEFT:
-				movex = -1
+			if event.key == K_W:
+				movex = -10
 			elif event.key == K_RIGHT:
-				movex = +1
+				movex = +10
 			elif event.key == K_UP:
-				movey = -1
+				movey = -10
 			elif event.key == K_DOWN:
-				movey = +1
+				movey = +10
 		if event.type == KEYUP:
 			if event.key == K_LEFT:
 				movex = 0
