@@ -46,4 +46,4 @@ while True:
 	screen.blit(background, (0, 0))
 	screen.blit(mouseC, (x, y))
 	pygame.display.update()
-	
+	fpsTime.tick(fps)
