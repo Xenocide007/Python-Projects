@@ -20,7 +20,7 @@ while True:
 			pygame.quit()
 			sys.exit()
 		if event.type == KEYDOWN:
-			if event.key == K_LEFT:
+			if event.key == K_:
 				movex = -10
 			elif event.key == K_RIGHT:
 				movex = +10
@@ -42,6 +42,5 @@ while True:
 
 	screen.blit(background, (0, 0))
 	screen.blit(mouseC, (x, y))
-
 	pygame.display.update()
 

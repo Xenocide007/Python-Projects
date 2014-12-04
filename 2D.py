@@ -43,7 +43,9 @@ while True:
 	x+= movex
 	y+= movey
 
+	random = (180,40,180)
+	screen.fill(random)
 	screen.blit(background, (0, 0))
 	screen.blit(mouseC, (x, y))
 	pygame.display.update()
-	fpsTime.tick(fps)
+	
