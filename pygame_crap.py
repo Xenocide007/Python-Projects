@@ -6,10 +6,14 @@ from pygame.locals import *
 
 pygame.init()
 
-screen = pygame.display.set_mode((1280, 1280), 0, 32)
+screen = pygame.display.set_mode((800, 1280), 0, 32)
 
 background = pygame.image.load(bg).convert()
 mouseC = pygame.image.load(mouseCO).convert_alpha()
+
+
+
+
 
 x, y = 0,0
 movex, movey = 0, 0
@@ -20,7 +24,7 @@ while True:
 			pygame.quit()
 			sys.exit()
 		if event.type == KEYDOWN:
-			if event.key == K_LEFT:
+			if event.key == K_:
 				movex = -10
 			elif event.key == K_RIGHT:
 				movex = +10
@@ -42,6 +46,5 @@ while True:
 
 	screen.blit(background, (0, 0))
 	screen.blit(mouseC, (x, y))
-
 	pygame.display.update()
 

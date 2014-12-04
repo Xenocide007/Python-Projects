@@ -7,8 +7,13 @@ import random, sys, time, math, pygame
 from pygame.locals import *
 
 FPS = 30 # frames per second to update the screen
+<<<<<<< HEAD
 WINWIDTH = 640 # width of the program's window, in pixels
 WINHEIGHT = 480 # height in pixels
+=======
+WINWIDTH = 1200 # width of the program's window, in pixels
+WINHEIGHT = 800 # height in pixels
+>>>>>>> origin/master
 HALF_WINWIDTH = int(WINWIDTH / 2)
 HALF_WINHEIGHT = int(WINHEIGHT / 2)
 
@@ -355,8 +360,13 @@ def getRandomOffCameraPos(camerax, cameray, objWidth, objHeight):
 
 def makeNewSquirrel(camerax, cameray):
     sq = {}
+<<<<<<< HEAD
     generalSize = random.randint(5, 25)
     multiplier = random.randint(1, 3)
+=======
+    generalSize = random.randint(5, 30)
+    multiplier = random.randint(1, 20)
+>>>>>>> origin/master
     sq['width']  = (generalSize + random.randint(0, 10)) * multiplier
     sq['height'] = (generalSize + random.randint(0, 10)) * multiplier
     sq['x'], sq['y'] = getRandomOffCameraPos(camerax, cameray, sq['width'], sq['height'])

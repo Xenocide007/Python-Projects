@@ -1,5 +1,5 @@
-mouseCO = "TIEfantom.png"
-bg = "bg.png"
+mouseCO = "TIEfantom.jpg"
+bg = "bg.jpg"
 
 import pygame, sys
 from pygame.locals import *
