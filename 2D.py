@@ -1,21 +1,24 @@
 mouseCO = "Mario.png"
-bg = "bg.png"
+running = True
+import os
 
+import random
 import pygame, sys
 from pygame.locals import *
 
 pygame.init()
-fps = 30
 
-screen = pygame.display.set_mode((1280, 1280), 0, 32)
+screen = pygame.display.set_mode((800, 1280), 0, 32)
 
 background = pygame.image.load(bg).convert()
 mouseC = pygame.image.load(mouseCO).convert_alpha()
 
+
+
+
+
 x, y = 0,0
 movex, movey = 0, 0
-
-isAlive = 'yes'
 
 while True:
 	for event in pygame.event.get():
@@ -45,4 +48,6 @@ while True:
 
 	screen.blit(background, (0, 0))
 	screen.blit(mouseC, (x, y))
+
 	pygame.display.update()
+
