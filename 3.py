@@ -24,8 +24,9 @@ def move(board):
 	for listt in board:
 		for subvalue in range(len(listt)):
 			if mov == subvalue:
-				 listt[subvalue]= "X"
-				 print board
+				listt[subvalue]= "X"
+				print board
+			
 
 
 
