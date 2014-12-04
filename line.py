@@ -1,22 +1,12 @@
-mouseCO = "Mario.png"
-running = True
-
 import os
 import random
-import pygame, sys
-from pygame.locals import *
-
-pygame.init()
-
-screen = pygame.display.set_mode((800, 1280), 0, 32)
-mouseC = pygame.image.load(mouseCO).convert_alpha()
-
+import pygame
 
 # Class for the orange dude
 class Player(object):
     
     def __init__(self):
-        self.rect = mouseC
+        self.rect = pygame.Rect(32, 32, 16, 16)
 
     def move(self, dx, dy):
         
@@ -49,14 +39,15 @@ class Wall(object):
     
     def __init__(self, pos):
         walls.append(self)
-        self.rect = mouseC
+        self.rect = pygame.Rect(pos[0], pos[1], 16, 16)
 
 # Initialise pygame
 os.environ["SDL_VIDEO_CENTERED"] = "1"
 pygame.init()
 
 # Set up the display
-screen = pygame.display.set_mode((1000, 800))
+pygame.display.set_caption("Get to the red square!")
+screen = pygame.display.set_mode((800, 600))
 
 clock = pygame.time.Clock()
 walls = [] # List to hold the walls
@@ -64,21 +55,25 @@ player = Player() # Create the player
 
 # Holds the level layout in a list of strings.
 level = [
-"WWWWWWWWWWWWWWWWWWWWWWW",
-"W                     W",
-"W         WWWWWW      W",
-"W   WWWW       W   WW W",
-"W   W        WWWW     W",
-"W WWW  WWWW           W",
-"W   W     W W         W",
-"W   W     W   WWW WWWWW",
-"W   WWW WWW   W W     W",
-"W     W   W   W W     W",
-"WWW   W   WWWWW W     W",
-"W W      WW         WWW",
-"W W   WWWW   WWW  E   W",
-"W     W        W      W",
-"WWWWWWWWWWWWWWWW WWWWWW",
+
+"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"W           E                                               ",
+"W                                                           ",
+"W                                                           ",
+"W                                                           ",
+"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
 ]
 
 # Parse the level string above. W = wall, E = exit
@@ -88,7 +83,7 @@ for row in level:
         if col == "W":
             Wall((x, y))
         if col == "E":
-            end_rect = mouseC
+            end_rect = pygame.Rect(x, y, 16, 16)
         x += 16
     y += 16
     x = 0
@@ -96,7 +91,7 @@ for row in level:
 running = True
 while running:
     
-    clock.tick(60)
+    clock.tick(200)
     
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
@@ -107,10 +102,22 @@ while running:
     # Move the player if an arrow key is pressed
     key = pygame.key.get_pressed()
     if key[pygame.K_LEFT]:
-        player.move(-2, 0)
+        player.move(-10, 0)
     if key[pygame.K_RIGHT]:
-        player.move(2, 0)
+        player.move(10, 0)
     if key[pygame.K_UP]:
-        player.move(0, -2)
+        player.move(0, -10)
     if key[pygame.K_DOWN]:
-        player.move(0, 2)
+        player.move(0, 10)
+    
+    # Just added this to make it slightly fun ;)
+    if player.rect.colliderect(end_rect):
+        raise SystemExit, "You win!"
+    
+    # Draw the scene
+    screen.fill((0, 0, 0))
+    for wall in walls:
+        pygame.draw.rect(screen, (255, 255, 255), wall.rect)
+    pygame.draw.rect(screen, (255, 0, 0), end_rect)
+    pygame.draw.rect(screen, (255, 200, 0), player.rect)
+    pygame.display.flip()
