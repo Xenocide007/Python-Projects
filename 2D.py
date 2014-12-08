@@ -12,10 +12,6 @@ screen = pygame.display.set_mode((800, 1280), 0, 32)
 
 mouseC = pygame.image.load(mouseCO).convert_alpha()
 
-
-
-
-
 x, y = 0,0
 movex, movey = 0, 0
 
