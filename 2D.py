@@ -8,8 +8,7 @@ from pygame.locals import *
 
 pygame.init()
 
-screen = pygame.display.set_mode((800, 1280), 0, 32)
-
+screen = pygame.display.set_mode((1500, 800), 0, 32)
 mouseC = pygame.image.load(mouseCO).convert_alpha()
 
 x, y = 0,0
