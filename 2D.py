@@ -10,7 +10,6 @@ pygame.init()
 
 screen = pygame.display.set_mode((800, 1280), 0, 32)
 
-background = pygame.image.load(bg).convert()
 mouseC = pygame.image.load(mouseCO).convert_alpha()
 
 
@@ -48,7 +47,7 @@ while True:
 
 	random = (180,40,180)
 	screen.fill(random)
-	screen.blit(background, (0, 0))
+	screen.blit(screen, (0, 0))
 	screen.blit(mouseC, (x, y))
 
 	pygame.display.update()

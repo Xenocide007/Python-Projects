@@ -356,7 +356,7 @@ def getRandomOffCameraPos(camerax, cameray, objWidth, objHeight):
 def makeNewSquirrel(camerax, cameray):
     sq = {}
     generalSize = random.randint(5, 30)
-    multiplier = random.randint(1, 20)
+    multiplier = random.randint(1, 5)
     sq['width']  = (generalSize + random.randint(0, 10)) * multiplier
     sq['height'] = (generalSize + random.randint(0, 10)) * multiplier
     sq['x'], sq['y'] = getRandomOffCameraPos(camerax, cameray, sq['width'], sq['height'])
