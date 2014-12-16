@@ -1,72 +1,58 @@
-mouseCO = "Mario.png"
-running = True
-import os
-import random
-import pygame, sys
-from pygame.locals import *
+import sys  
+import pygame  
 
-pygame.init()
+from pygame.locals import *  
 
-#screen = pygame.display.set_mode((1500, 800))
-screen = pygame.display.set_mode((750, 400))
-mouseC = pygame.image.load(mouseCO).convert_alpha()
+#Initalize the Program  
+pygame.init()  
+#Create the Screen  
+w =  640         
+h = 480 
+screen= pygame.display.set_mode((w,h), 0, 32)  
+pygame.draw.rect(screen, (0, 255, 0), (0, 0, 100, 480))  
+pygame.draw.rect(screen, (0, 255, 0), (640, 0,540, 480))  
 
-white = (255,255,255)
-black = (0,0,0)
-red = (255,0,0)
+pygame.display.flip()
 
-pygame.display.set_caption("Stuff")
+fname = "mario.png" 
+player = pygame.image.load (fname).convert()
+screen.blit (player, (100, 100))
+pygame.display.update()   
 
-lead_x = 400
-lead_y = 300
-lead_x_change = 0
-lead_y_change = 0
+y = 300 
+x = 100 
+y_dir = 0 
+x_dir = 0 
 
-random = (180,40,180)
-clock = pygame.time.Clock()
-gameExit = False
+while True:  
+    for event in pygame.event.get():   
+        if event.type == QUIT:  
+            pygame.quit()  
+            sys.exit()
 
-while not gameExit:
-	for event in pygame.event.get():
-		print("event.type", event.type)
-		if event.type == pygame.QUIT:
-			gameExit = True
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_LEFT:
-				lead_x_change = -5
-				lead_y_change = 0
-			if event.key == pygame.K_RIGHT:
-				lead_x_change = 5
-				lead_y_change = 0
-			if event.key == pygame.K_UP:
-				lead_y_change = -5
-				lead_x_change = 0
-			if event.key == pygame.K_DOWN:
-				lead_y_change = 5
-				lead_x_change = 0
-	else:
-		print("this is dangerous")
-		lead_x_change = lead_y_change = 0
-	if lead_x > 1360:
-		lead_x_change = -5
-	if lead_x < 0:
-		lead_x_change = 5
-	if lead_y > 650:
-		lead_y_change = -5
-	if lead_y < 0:
-		lead_y_change = 5		
+        if event.type == KEYDOWN:  
+            if event.key == K_UP:   
+                y_dir = -1  
+            if event.key == K_DOWN:   
+                y_dir = 1 
+            if event.key == K_RIGHT:  
+                x_dir = 1 
+            if event.key == K_LEFT:  
+                x_dir = -1 
 
 
-	lead_x += lead_x_change
-	lead_y += lead_y_change
-	screen.fill(random)
-	screen.blit(screen, (0, 0))
-	screen.blit(mouseC, (lead_x, lead_y))
+        if event.type == KEYUP:  
+            if event.key == K_UP or event.key == K_DOWN:   
+                y_dir = 0 
+            if event.key == K_LEFT or event.key == K_RIGHT:  
+                x_dir = 0 
+    
+    y += y_dir  
+    x += x_dir   
+    
+    screen.fill ((0, 0, 0))   
+    screen.blit (player, (x, y))  
+    pygame.draw.rect(screen, (0, 255, 0), (0, 0, 100, 480))
+    pygame.draw.rect(screen, (0, 255, 0), (640, 0,540, 480))
 
-	pygame.display.update()
-
-	clock.tick(100)
-
-pygame.quit()
-quit()
-
+    pygame.display.update() 
